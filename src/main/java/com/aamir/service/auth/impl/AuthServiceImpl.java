@@ -7,6 +7,7 @@ import com.aamir.enums.UserRole;
 import com.aamir.mapper.UserMapper;
 import com.aamir.repo.UserRepository;
 import com.aamir.service.auth.AuthService;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -33,5 +34,18 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public Boolean hasUserWithEmail(String email) {
         return userRepository.findFirstByEmail(email).isPresent();
+    }
+
+    @PostConstruct // creating admin data internally
+    public void createAdminAccount() {
+        User adminAccount = userRepository.findByRole(UserRole.ADMIN);
+        if (null == adminAccount){
+            User user = new User();
+            user.setEmail("aamir@gmail.com");
+            user.setName("Aamir Khan");
+            user.setRole(UserRole.ADMIN);
+            user.setPassword(bCryptPasswordEncoder.encode("aamir"));
+            userRepository.save(user);
+        }
     }
 }
