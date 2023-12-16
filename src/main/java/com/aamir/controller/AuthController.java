@@ -43,19 +43,19 @@ public class AuthController {
 
 
     @PostMapping("/authenticate")
-    public void createAuthenticationToken(@RequestBody AuthDTO loginDTO,
+    public void createAuthenticationToken(@RequestBody AuthDTO authDTO,
                                           HttpServletResponse response) throws IOException, JSONException {
 
         try {
             authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken
-                            (loginDTO.username(), loginDTO.password()));
+                            (authDTO.username(), authDTO.password()));
 
         } catch (Exception e) {
             throw new BadCredentialsException("Incorrect Username & Password.");
         }
 
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(loginDTO.username());
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(authDTO.username());
         Optional<User> userOptional = userRepository.findFirstByEmail(userDetails.getUsername());
         String jwt = jwtUtil.generateToken(userDetails.getUsername());
 
