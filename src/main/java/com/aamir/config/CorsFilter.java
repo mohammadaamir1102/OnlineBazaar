@@ -31,7 +31,7 @@ public class CorsFilter implements Filter {
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
         HttpServletResponse response = (HttpServletResponse) res;
-        HttpServletRequest request = (HttpServletRequest) res;
+        HttpServletRequest request = (HttpServletRequest) req;
         Map<String, String> map = new HashMap<>();
         String origin = request.getHeader("origin");
         response.setHeader("Access-Control-Allow-Origin", origin);

@@ -25,7 +25,7 @@ public class AuthServiceImpl implements AuthService {
                 .email(signupDTO.email())
                 .name(signupDTO.name())
                 .password(bCryptPasswordEncoder.encode(signupDTO.password()))
-                .role(UserRole.ADMIN)
+                .role(UserRole.CUSTOMER)
                 .build();
 
         return UserMapper.userEntityToUserDTO(userRepository.save(user));
