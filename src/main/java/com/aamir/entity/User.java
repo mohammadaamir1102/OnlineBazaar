@@ -2,9 +2,11 @@ package com.aamir.entity;
 
 import com.aamir.enums.UserRole;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Data;
 
 @Data
+@Builder
 @Entity
 public class User {
 
