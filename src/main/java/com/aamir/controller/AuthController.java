@@ -1,6 +1,6 @@
 package com.aamir.controller;
 
-import com.aamir.dto.AuthDTO;
+import com.aamir.dto.AuthenticationDTO;
 import com.aamir.dto.SignupDTO;
 import com.aamir.dto.UserDTO;
 import com.aamir.entity.User;
@@ -18,6 +18,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -43,19 +44,19 @@ public class AuthController {
 
 
     @PostMapping("/authenticate")
-    public void createAuthenticationToken(@RequestBody AuthDTO authDTO,
+    public void createAuthenticationToken(@RequestBody AuthenticationDTO authDTO,
                                           HttpServletResponse response) throws IOException, JSONException {
 
         try {
             authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken
-                            (authDTO.username(), authDTO.password()));
+                            (authDTO.getUsername(), authDTO.getPassword()));
 
         } catch (Exception e) {
             throw new BadCredentialsException("Incorrect Username & Password.");
         }
 
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(authDTO.username());
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(authDTO.getUsername());
         Optional<User> userOptional = userRepository.findFirstByEmail(userDetails.getUsername());
         String jwt = jwtUtil.generateToken(userDetails.getUsername());
 
