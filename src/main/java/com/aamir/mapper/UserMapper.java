@@ -1,6 +1,6 @@
 package com.aamir.mapper;
 
-import com.aamir.dto.UserDTO;
+import com.aamir.dtos.auth.UserDTO;
 import com.aamir.entity.User;
 
 public class UserMapper {

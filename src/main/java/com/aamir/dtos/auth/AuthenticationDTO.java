@@ -1,4 +1,4 @@
-package com.aamir.dto;
+package com.aamir.dtos.auth;
 
 import lombok.Getter;
 import lombok.Setter;

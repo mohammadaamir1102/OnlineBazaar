@@ -1,13 +1,12 @@
 package com.aamir.service.auth.impl;
 
-import com.aamir.dto.SignupDTO;
-import com.aamir.dto.UserDTO;
+import com.aamir.dtos.auth.SignupDTO;
+import com.aamir.dtos.auth.UserDTO;
 import com.aamir.entity.User;
 import com.aamir.enums.UserRole;
 import com.aamir.mapper.UserMapper;
 import com.aamir.repo.UserRepository;
 import com.aamir.service.auth.AuthService;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;

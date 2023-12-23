@@ -1,8 +1,8 @@
 package com.aamir.controller;
 
-import com.aamir.dto.AuthenticationDTO;
-import com.aamir.dto.SignupDTO;
-import com.aamir.dto.UserDTO;
+import com.aamir.dtos.auth.AuthenticationDTO;
+import com.aamir.dtos.auth.SignupDTO;
+import com.aamir.dtos.auth.UserDTO;
 import com.aamir.entity.User;
 import com.aamir.repo.UserRepository;
 import com.aamir.service.auth.AuthService;

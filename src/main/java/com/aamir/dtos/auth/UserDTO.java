@@ -1,4 +1,4 @@
-package com.aamir.dto;
+package com.aamir.dtos.auth;
 
 import com.aamir.enums.UserRole;
 import lombok.Builder;
