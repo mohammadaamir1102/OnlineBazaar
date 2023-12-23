@@ -1,4 +1,4 @@
-package com.aamir.controller;
+package com.aamir.controller.auth;
 
 import com.aamir.dtos.auth.AuthenticationDTO;
 import com.aamir.dtos.auth.SignupDTO;
