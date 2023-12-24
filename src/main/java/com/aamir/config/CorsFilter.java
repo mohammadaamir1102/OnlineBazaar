@@ -39,6 +39,9 @@ public class CorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Origin", "3600");
         response.setHeader("Access-Control-Allow-Origin", "*");
         response.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, X-Requested-With, remember-me");
+        response.addHeader("Access-Control-Expose-Headers", "Authorization");
+        response.addHeader("Access-Control-Allow-Headers", "Authorization, X-PINGOTHER, Origin, "
+                + "X-Requested-With, Content-Type, Accept, X-Custom-header");
 
 
         if ("OPTIONS".equals(request.getMethod())) {
